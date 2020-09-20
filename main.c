@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
+#include <limits.h>
 #include "tree.h"
 
 void push_node(node *root, int num);
 node *alloca_node(int num);
-void em_ordem(node *main_root, int f);
+void in_order(node *main_root, int f);
 
 int main()
 {
-    node *main_root = alloca_node((int)random() % 100);
-
-    for (int i = 0; i < 10; i++)
+    node *main_root = alloca_node(0);
+    for (int i = 0; i < 100; i++)
     {
-        push_node(main_root, (int)random() % 100);
+        push_node(main_root, i);
+        //printf("balanced tree %s\n", (balanced_tree(main_root) ? "true" : "false"));
     }
-    em_ordem(main_root, 0);
+    free_tree(main_root);
     return 0;
 }
