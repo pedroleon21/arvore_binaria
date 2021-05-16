@@ -3,18 +3,36 @@
 #include <time.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <time.h>
 #include "node.h"
+#include "utils/utils.h"
 
 
-
-int main()
+int main(int argc, char *argv[])
 {
-    node *main_root = NULL;
-    for (int i = 0; i < 100; i++)
+    node *root = NULL;
+    int n = 0, *vet = NULL;
+    printf("INT_MAX %d node: %ld , argc: %d\n", INT_MAX, sizeof(node), argc);
+    if (argc == 1)
     {
-        push_node(main_root, i);
-        //printf("balanced tree %s\n", (balanced_tree(main_root) ? "true" : "false"));
+        printf("Digite o tamanho a arvore: ");
+        scanf("%d", &n);
     }
-    free_tree(main_root);
+    else
+        n = atoi(argv[1]);
+
+    vet = cria_bagunca_vetor(n);
+    for (int i = 0; i < n; i++)
+        root = push_node(root, vet[i]);
+
+    free(vet);
+    pula();
+    em_ordem(root);
+    pula();
+    pre_ordem(root);
+    pula();
+    pos_ordem(root);
+    printf("\n size: %d", size_tree(root));
+    free_tree(root);
     return 0;
 }
