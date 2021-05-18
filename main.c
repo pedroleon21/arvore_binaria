@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     printf("INT_MAX %d node: %ld , argc: %d\n", INT_MAX, sizeof(node), argc);
     if (argc == 1)
     {
+        
         printf("Digite o tamanho a arvore: ");
         scanf("%d", &n);
     }
